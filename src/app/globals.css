@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #0F5E4E;
+  --accent: #1D9E75;
+  --background: #F8FDFB;
+  --foreground: #1A2B24;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #F8FDFB;
+    color: #1A2B24;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    line-height: 1.25;
+    color: #0F5E4E;
+  }
+
+  code, pre, .code-font {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+  }
+
+  .ui-font {
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  ::selection {
+    background-color: #1D9E75;
+    color: white;
+  }
+
+  :focus-visible {
+    outline: 2px solid #1D9E75;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 text-white font-ui font-semibold px-6 py-3 rounded-card 
+           hover:bg-primary-700 active:bg-primary-800 transition-all duration-200 
+           shadow-sm hover:shadow-md inline-flex items-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-primary-600 text-primary-600 font-ui font-semibold px-6 py-3 rounded-card
+           hover:bg-primary-600 hover:text-white transition-all duration-200 inline-flex items-center gap-2;
+  }
+
+  .btn-ghost {
+    @apply text-primary-600 font-ui font-medium px-4 py-2 rounded-card
+           hover:bg-primary-50 transition-all duration-200 inline-flex items-center gap-2;
+  }
+
+  .card {
+    @apply bg-white rounded-card shadow-card border border-primary-100 p-6 transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+
+  .callout-tip {
+    @apply bg-primary-50 border-l-4 border-primary-600 p-4 rounded-r-card my-4;
+  }
+
+  .callout-warning {
+    @apply bg-amber-50 border-l-4 border-amber-400 p-4 rounded-r-card my-4;
+  }
+
+  .callout-term {
+    @apply bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-card my-4;
+  }
+
+  .badge-beginner {
+    @apply bg-amber-100 text-amber-800 font-ui font-semibold text-xs px-3 py-1 rounded-full;
+  }
+
+  .badge-intermediate {
+    @apply bg-accent/10 text-accent font-ui font-semibold text-xs px-3 py-1 rounded-full;
+  }
+
+  .badge-advanced {
+    @apply bg-red-100 text-red-700 font-ui font-semibold text-xs px-3 py-1 rounded-full;
+  }
+
+  .badge-capstone {
+    @apply bg-purple-100 text-purple-700 font-ui font-semibold text-xs px-3 py-1 rounded-full;
+  }
+
+  .section-title {
+    @apply font-heading text-3xl md:text-4xl text-primary-600 mb-3;
+  }
+
+  .section-subtitle {
+    @apply font-ui text-lg text-primary-500/80 mb-8;
+  }
+
+  .code-block {
+    @apply bg-gray-900 text-gray-100 rounded-card p-4 overflow-x-auto font-code text-sm leading-relaxed;
+  }
+
+  .terminal-output {
+    @apply bg-gray-950 text-gray-100 rounded-card p-4 font-code text-sm leading-relaxed min-h-[120px];
+  }
+
+  .nav-link {
+    @apply font-ui font-medium text-sm text-primary-700 hover:text-accent transition-colors duration-150;
+  }
+
+  .lesson-header {
+    @apply bg-teal-gradient text-white p-8 rounded-card mb-6;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #1D9E75 #F0FAF7;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: #F0FAF7;
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #1D9E75;
+    border-radius: 3px;
+  }
+
+  .glass {
+    backdrop-filter: blur(12px);
+    background: rgba(248, 253, 251, 0.85);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #0F5E4E, #1D9E75);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Monaco Editor overrides */
+.monaco-editor {
+  border-radius: 0 0 12px 12px !important;
+}
+
+/* Custom scrollbar for code editors */
+.editor-container .monaco-editor .scrollbar .slider {
+  background: #1D9E75 !important;
+}
+
+/* Animated gauge */
+@keyframes gaugeFill {
+  from { stroke-dashoffset: 251; }
+  to { stroke-dashoffset: var(--target-offset, 125); }
+}
+
+@keyframes tokenFlow {
+  0% { transform: translateX(0); opacity: 1; }
+  50% { transform: translateX(30px); opacity: 0.6; }
+  100% { transform: translateX(60px); opacity: 0; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(29, 158, 117, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(29, 158, 117, 0); }
+}
+
+/* Highlight animations */
+.token-positive {
+  @apply bg-green-100 text-green-800 rounded px-0.5 transition-all duration-300;
+}
+
+.token-negative {
+  @apply bg-red-100 text-red-800 rounded px-0.5 transition-all duration-300;
+}
+
+.token-neutral {
+  @apply text-gray-700;
+}
+
+/* Terminal text colors */
+.terminal-positive { color: #4ade80; }
+.terminal-negative { color: #f87171; }
+.terminal-info { color: #60a5fa; }
+.terminal-warning { color: #fbbf24; }
